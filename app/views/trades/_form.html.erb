@@ -1,0 +1,33 @@
+<%= form_with(model: trade) do |form| %>
+  <% if trade.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(trade.errors.count, "error") %> prohibited this trade from being saved:</h4>
+      <ul>
+        <% trade.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %> 
+  <div class="mb-3">
+    <%= form.label :symbol %>
+    <%= form.text_field :symbol, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :entry_price %>
+    <%= form.text_field :entry_price, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :exit_price %>
+    <%= form.text_field :exit_price, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :note %>
+    <%= form.text_area :note, class: "form-control" %>
+  </div>
+
+  <%= form.submit class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TradingJournal</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body class="bg-light">
+  <nav class="navbar navbar-dark bg-dark px-3">
+  <div>
+    <a class="navbar-brand" href="/">Trading Journal</a>
+    <a class="btn btn-outline-light" href="/trades">Trades</a>
+  </div> 
+<div>
+  <% if user_signed_in? %>
+    <span class="text-white me-3">Signed in as <%= current_user.email %></span>
+    <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn btn-danger" %>
+  <% else %>
+    <%= link_to "Login", new_user_session_path, class: "btn btn-outline-light" %>
+    <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-success" %>
+  <% end %> 
+</div> 
+    
+  </nav>
+
+  <div class="container mt-4">
+    <% if notice %>
+      <div class="alert alert-success"><%= notice %></div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger"><%= alert %></div>
+    <% end %> 
+    <%= yield %>
+  </div>
+</body>
+</html>

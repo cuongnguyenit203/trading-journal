@@ -1,0 +1,27 @@
+<div id="<%= dom_id trade %>">
+  <p>
+    <strong>Symbol:</strong>
+    <%= trade.symbol %>
+  </p>
+
+  <p>
+    <strong>Entry price:</strong>
+    <%= trade.entry_price %>
+  </p>
+
+  <p>
+    <strong>Exit price:</strong>
+    <%= trade.exit_price %>
+  </p>
+
+  <p>
+    <strong>Profit:</strong>
+    <%= number_with_precision trade.pnl, precision: 2 %>
+  </p>
+
+  <p>
+    <strong>Note:</strong>
+    <%= trade.note %>
+  </p>
+
+</div>
